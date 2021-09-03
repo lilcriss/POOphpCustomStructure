@@ -25,7 +25,7 @@ class Posts{
 
     public function getExcerpt(){
 
-        return substr($this->text,0,120) . "<a href='".$this->url."'> ...</a>";
+        return substr($this->text,0,120) . "<a href='".$this->url."'>[...]</a>";
     }
 
     public function getId(){
