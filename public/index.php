@@ -19,12 +19,15 @@ switch($p){
 
    case "home":
     $posts = \App\Tables\Posts::getAll();
+    $count = \App\Tables\Posts::getCount();
     //\App\Utils::var_dump_pre($posts);
    break;
 
    case "single":
     $id= isset ($_GET['id']) && ((int)$_GET['id']*1)>0 ? $_GET['id'] : 1;
     $posts = \App\Tables\Posts::getOne($id);
+    $siteTitle = \App\Config::getTitle();
+    \App\Config::setTitle($posts[0]->title."|".$siteTitle);
    break;
 
    case "categories":

@@ -2,7 +2,7 @@
 
  <div class="col-12">
 
-  <h1>HOME</h1>
+  <h1>HOME (<?=$count[0]->count?>)</h1>
 
  </div>
 
