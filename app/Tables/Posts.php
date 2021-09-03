@@ -15,11 +15,21 @@ class Posts extends Table {
         SELECT posts.*,categories.name as category 
         FROM posts 
         LEFT JOIN categories
-        On posts.categories_id = categories.id
-        ORDER BY id",__CLASS__);
+        ON posts.categories_id = categories.id
+        ORDER BY id DESC",__CLASS__);
     }
 
+    public static function getPostsByCat($cat_id){
 
+        return Config::getDb()->query("
+
+        SELECT posts.*,categories.name as category 
+        FROM posts 
+        LEFT JOIN categories
+        ON posts.categories_id = categories.id
+        WHERE posts.categories_id = ?
+        ORDER BY id DESC",__CLASS__,[$cat_id]);
+    }
 
     public function getExcerpt(){
 

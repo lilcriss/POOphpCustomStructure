@@ -30,11 +30,16 @@ switch($p){
    case "categories":
     $categories = \App\Tables\Categories::getAll();
    break;
+
+   case "category":
+    $id= isset ($_GET['id']) && ((int)$_GET['id']*1)>0 ? $_GET['id'] : 1;
+    $category = \App\Tables\Categories::getOne($id);
+    $posts = \App\Tables\Posts::getPostsByCat($id);
+   break;
 }
 
 // On se déconnecte
 //$db = null;
-
 
 // On charge la vue dans la mémoire tampon
 ob_start();
