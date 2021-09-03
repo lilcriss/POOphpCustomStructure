@@ -18,7 +18,7 @@ $db = \App\Config::getDb();
 switch($p){
 
    case "home":
-    $posts = $db->query("SELECT * FROM posts ORDER BY id","App\Tables\Posts");
+    $posts = \App\Tables\Posts::getAll($db);
     //\App\Utils::var_dump_pre($posts);
    break;
 
