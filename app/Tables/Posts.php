@@ -2,11 +2,15 @@
 
 namespace App\Tables;
 
-class Posts{
+use \App\Config;
 
-    public static function getAll($db){
+ 
 
-        return $db->query("
+class Posts extends Table {
+
+    public static function getAll(){
+
+        return Config::getDb()->query("
 
         SELECT posts.*,categories.name as category 
         FROM posts 
@@ -16,12 +20,6 @@ class Posts{
     }
 
 
-    public function __get($key)
-    {
-      $method = 'get'.ucfirst($key); 
-      $this->$key = $this->$method();
-      return $this->$key ;
-    }
 
     public function getExcerpt(){
 

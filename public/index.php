@@ -13,18 +13,18 @@ $p = isset($_GET['p']) ? $_GET['p'] : "home";
 $view = is_file("../views/$p.php") ? "../views/$p.php" :"../views/404.php";
 
 // On se connecte à la database
-$db = \App\Config::getDb();
+//$db = \App\Config::getDb();
 
 switch($p){
 
    case "home":
-    $posts = \App\Tables\Posts::getAll($db);
+    $posts = \App\Tables\Posts::getAll();
     //\App\Utils::var_dump_pre($posts);
    break;
 
    case "single":
     $id= isset ($_GET['id']) && ((int)$_GET['id']*1)>0 ? $_GET['id'] : 1;
-    $posts = $db->query("SELECT * FROM posts WHERE id=?","App\Tables\Posts",[$id]);
+    $posts = \App\Tables\Posts::getOne($id);
    break;
 
    case "categories":
@@ -33,7 +33,7 @@ switch($p){
 }
 
 // On se déconnecte
-$db = null;
+//$db = null;
 
 
 // On charge la vue dans la mémoire tampon
