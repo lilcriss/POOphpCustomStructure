@@ -26,6 +26,10 @@ switch($p){
     $id= isset ($_GET['id']) && ((int)$_GET['id']*1)>0 ? $_GET['id'] : 1;
     $posts = $db->query("SELECT * FROM posts WHERE id=?","App\Tables\Posts",[$id]);
    break;
+
+   case "categories":
+    $categories = \App\Tables\Categories::getAll();
+   break;
 }
 
 // On se déconnecte
