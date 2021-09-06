@@ -10,7 +10,7 @@ $p = isset($_GET['p']) ? $_GET['p'] : "home";
 
 // On détermine le aprcours pour afficher la vue
 
-$view = is_file("../views/$p.php") ? "../views/$p.php" :"../views/404.php";
+$view = is_file("../views/pages/$p.php") ? "../views/pages/$p.php" :"../views/404.php";
 
 // On se connecte à la database
 //$db = \App\Config::getDb();

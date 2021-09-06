@@ -39,10 +39,11 @@ class Database{
         return $this->pdo;
     }
 
-    public function query($statement,$class_name,$param=[]){
+    public function query($statement,$class,$param=[]){
         $stmt = $this->getPDo()->prepare($statement);
         $stmt->execute($param);
-        $result = $stmt->fetchAll(PDO::FETCH_CLASS,$class_name);
+        $result = $class===null ? $stmt->fetch(PDO::FETCH_OBJ) : $stmt->fetchAll
+        (PDO::FETCH_CLASS,$class);
         return $result;
     }
 }
